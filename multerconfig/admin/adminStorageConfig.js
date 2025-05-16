@@ -23,9 +23,16 @@ const filefilter = ( req,file,callback ) =>{
 }
 
 
-const upload = multer({
-    storage : storage,
-    fileFilter : filefilter
-});
+// const upload = multer({
+//     storage : storage,
+//     fileFilter : filefilter
+// });
 
+const upload = multer({
+    storage: storage,
+    fileFilter: filefilter,
+    limits: {
+        fieldSize: 10 * 1024 * 1024 // 10MB for text fields
+    }
+});
 module.exports = upload;
